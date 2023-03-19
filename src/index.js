@@ -6,20 +6,40 @@ import { domManipulation } from './DOM/domManipulator';
 import startOfToday from 'date-fns/startOfToday'
 import format from 'date-fns/format';
 
+
+let project=new Project();
+
+if(!localStorage.getItem("project")){
+   let item=new Item("TOP","FINISH TODOLIST PROJECT",1,format(startOfToday(),"yyyy-MM-dd"));
+   let list=new List("Work");
+   list.addItem(item);
+   domManipulation.appendListElement(list);
+   domManipulation.displayList(list);
+   localStorage.setItem("project",JSON.stringify(project));
+}
+else{
+    let returnProject=JSONToProject(JSON.parse(localStorage.getItem("project")));
+    // TYPING To Do
+    // console.log(project.list);
+    for(let i=0;i<returnProject.list.length;i++){
+        let list=returnProject.list[i];
+        console.log(list);
+        domManipulation.appendListElement(list);
+        domManipulation.displayList(list);
+    }
+}
+
+
 const addListbutton=document.querySelector(".add-list-button");
-addListbutton.addEventListener("click",domManipulation.applyAddingList);
+addListbutton.addEventListener("click",()=>{
+    domManipulation.applyAddingList();
+    localStorage.setItem("project",JSON.stringify(project));
+});
 
 
 
-let project=new Project("mahmoud Ahmed Abdulshakour");
-
-let item=new Item("TOP","FINISH TODOLIST PROJECT",1,format(startOfToday(),"yyyy-MM-dd"));
-let list=new List("Work");
-list.addItem(item);
 
 
-domManipulation.appendListElement(list);
-domManipulation.displayList(list);
 
 const todayButton=document.querySelector(".today");
 todayButton.addEventListener("click",()=>{
@@ -44,5 +64,21 @@ weekButton.addEventListener("click",()=>{
     parent.removeChild(parent.childNodes[1]);
 });
 
+
+function JSONToProject(obj){
+    let project=new Project();
+    for(let i=0;i<obj._list.length;i++){
+        let todo=obj._list[i];
+        let returnedtodo=new List(todo._name);
+        for(let j=0;j<todo._list;j++){
+            let item=todo._list[j];
+            let returneditem=new Item(item._title,item._description,item._priority,item._dueDate);
+            returnedtodo.addItem(returneditem);
+        }
+        project.addToDoList(returnedtodo);
+    }
+    console.log(project);
+    return project;
+}
 
 export {project};

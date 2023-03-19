@@ -1,6 +1,6 @@
 import {List} from './List';
 import isToday from 'date-fns/isToday';
-import isTomorrow from 'date-fns/isTomorrow';
+import isSameWeek from 'date-fns/isSameWeek';
 
 export class Project{
 
@@ -53,7 +53,6 @@ export class Project{
         }
         return list;
     }
-
 
     get list(){
         return this._list;

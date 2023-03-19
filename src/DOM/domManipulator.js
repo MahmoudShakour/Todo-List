@@ -139,7 +139,6 @@ export class domManipulation{
         const itemStatus=document.createElement("div");
         itemStatus.className="item-status-display";
         itemStatus.textContent="STATUS: " +itemObj.status;
-        console.log(itemStatus);
         if(itemObj.status==="Done") itemStatus.classList.add("toggling");
         else itemStatus.classList.remove("toggling");
         domManipulation.statusColor(itemStatus,itemObj);
