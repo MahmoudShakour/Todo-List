@@ -10,10 +10,13 @@ const addListbutton=document.querySelector(".add-list-button");
 addListbutton.addEventListener("click",domManipulation.applyAddingList);
 
 
-let item=new Item("desc","tit",1);
-let item2=new Item("desc","tit",1);
-let list=new List("work");
+let project=new Project("mahmoud Ahmed Abdulshakour");
+
+let item=new Item("TOP","FINISH TODOLIST PROJECT",1);
+let list=new List("Work");
 list.addItem(item);
-list.addItem(item2);
+
 
 domManipulation.appendListElement(list);
+domManipulation.displayList(list);
+export {project};

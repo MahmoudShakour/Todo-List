@@ -3,7 +3,7 @@ export class Item{
         this._title=title;
         this._description=description;
         this._priority=priority;
-        this._status="to-do";
+        this._status="To Do";
     }
 
     get description(){
@@ -18,6 +18,10 @@ export class Item{
         return this._priority;
     }
 
+    get status(){
+        return this._status;
+    }
+
     set description(value){
         this._description=value;
     }
@@ -28,5 +32,9 @@ export class Item{
 
     set priority(value){
         this._priority=value;
+    }
+
+    set status(value){
+        this._status=value;
     }
 }
