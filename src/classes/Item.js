@@ -1,8 +1,9 @@
 export class Item{
-    constructor(title,description,priority){
+    constructor(title,description,priority,dueDate){
         this._title=title;
         this._description=description;
         this._priority=priority;
+        this._dueDate=dueDate;
         this._status="To Do";
     }
 
@@ -36,5 +37,13 @@ export class Item{
 
     set status(value){
         this._status=value;
+    }
+
+    get dueDate(){
+        return this._dueDate;
+    }
+
+    set dueDate(value){
+        this._dueDate=value;
     }
 }

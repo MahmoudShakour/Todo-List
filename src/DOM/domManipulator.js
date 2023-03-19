@@ -132,29 +132,41 @@ export class domManipulation{
         itemPriority.className="item-priority-display";
         itemPriority.textContent="Priority: "+itemObj.priority;
 
+        const itemDueDate=document.createElement("div");
+        itemDueDate.className="item-dueDate-display";
+        itemDueDate.textContent="DueDate: "+itemObj.dueDate;
+
         const itemStatus=document.createElement("div");
         itemStatus.className="item-status-display";
-        itemStatus.classList.add("toggling");
         itemStatus.textContent="STATUS: " +itemObj.status;
-        domManipulation.statusColor(itemStatus);
+        console.log(itemStatus);
+        if(itemObj.status==="Done") itemStatus.classList.add("toggling");
+        else itemStatus.classList.remove("toggling");
+        domManipulation.statusColor(itemStatus,itemObj);
 
         itemContainer.appendChild(itemTitle);
         itemContainer.appendChild(itemDescription);
         itemContainer.appendChild(itemPriority);
         itemContainer.appendChild(itemStatus);
+        itemContainer.appendChild(itemDueDate);
 
         return itemContainer;
     }
 
-    static statusColor(itemStatus){
+    static statusColor(itemStatus,itemObj){
+
         itemStatus.addEventListener("click",()=>{
+            console.log(itemObj);
             if(itemStatus.textContent==="STATUS: To Do"){
                 itemStatus.textContent="STATUS: Done";
+                itemObj.status="Done";
+                itemStatus.classList.add("toggling");
             }
             else{
                 itemStatus.textContent="STATUS: To Do";
+                itemObj.status="To Do";
+                itemStatus.classList.remove("toggling");
             }
-            itemStatus.classList.toggle("toggling");
         });
     }
 
@@ -181,7 +193,6 @@ export class domManipulation{
         priority.type="number";
 
         const dueDate=document.createElement("input");
-        // dueDate.placeholder="MM/dd/yyyy";
         dueDate.name="dueDate";
         dueDate.required=true;
         dueDate.type="date";
@@ -203,8 +214,7 @@ export class domManipulation{
         let itemobj;
         form.addEventListener("submit",(e)=>{
             e.preventDefault();
-            // console.log(e.currentTarget.dueDate.value);
-            itemobj=new Item(e.currentTarget.Title.value,e.currentTarget.Description.value ,e.currentTarget.Priority.value);
+            itemobj=new Item(e.currentTarget.Title.value,e.currentTarget.Description.value ,e.currentTarget.Priority.value,e.currentTarget.dueDate.value);
             listObj.list.push(itemobj);
             let item=domManipulation.displayItem(itemobj);
             const container=document.querySelector(".display-container");
