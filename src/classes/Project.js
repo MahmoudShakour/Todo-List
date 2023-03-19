@@ -40,13 +40,13 @@ export class Project{
         return list;
     }
 
-    getTomorrowItems(){
+    getWeekItems(){
         let list=[];
         for(let i=0;i<this._list.length;i++){
             let todolist=this._list[i];
             for(let j=0;j<todolist._list.length;j++){
                 let item=todolist._list[j];
-                if(isTomorrow(new Date(item.dueDate))){
+                if(isSameWeek(new Date(item.dueDate))){
                     list.push(item);
                 }
             }

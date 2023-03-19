@@ -22,7 +22,7 @@ export class domManipulation{
         listName.textContent=listObj.name;
 
         const header=document.createElement("div");
-        header.className="header";
+        header.className="header-container";
         header.appendChild(listIcon);
         header.appendChild(listName);
 

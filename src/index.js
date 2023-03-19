@@ -33,12 +33,12 @@ todayButton.addEventListener("click",()=>{
 });
 
 
-const tomorrowButton=document.querySelector(".tomorrow");
-tomorrowButton.addEventListener("click",()=>{
-    let list=project.getTomorrowItems();
-    let tomorrowList=new List("Tomorrow");
-    tomorrowList.list=list;
-    domManipulation.displayList(tomorrowList);
+const weekButton=document.querySelector(".week");
+weekButton.addEventListener("click",()=>{
+    let list=project.getWeekItems();
+    let weekList=new List("This Week");
+    weekList.list=list;
+    domManipulation.displayList(weekList);
 
     const parent=document.querySelector(".display-container");
     parent.removeChild(parent.childNodes[1]);

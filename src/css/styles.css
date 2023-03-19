@@ -13,6 +13,19 @@ body{
     flex-direction: column;
 }
 
+.header{
+    display: flex;
+    padding: 20px;
+    justify-content: start;
+    gap: 10px;
+    background-color: #413d3d;
+}
+
+.header > div{
+    font-size: 40px;
+    font-weight: bold;
+}
+
 .content{
     flex:1;
     display: grid;
@@ -68,20 +81,22 @@ body{
 }
 
 .item-element-container,
-.header{
+.header-container{
     display: flex;
     gap: 5px;
     align-items: center;
 }
 
 .list-icon{
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
 }
 
 .list-name{
+    flex: 1;
     font-size: 25px;
     font-weight: 600;
+    padding: 10px;
 }
 
 .item-element{
@@ -191,7 +206,7 @@ body{
 }
 
 .today,
-.tomorrow
+.week
 {
     font-size: 20px;
     font-weight: bold;
@@ -200,7 +215,17 @@ body{
 }
 
 .today:hover,
-.tomorrow:hover
+.week:hover,
+.list-name:hover
 {
     background-color: #3a3939;
+}
+
+.footer{
+    display: grid;
+    place-content: center;
+    padding: 20px;
+    background-color: #413d3d;
+    font-size: 20px;
+    font-weight: bold;
 }
