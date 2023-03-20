@@ -18,11 +18,13 @@ if(!localStorage.getItem("project")){
    localStorage.setItem("project",JSON.stringify(project));
 }
 else{
-    let returnProject=JSONToProject(JSON.parse(localStorage.getItem("project")));
+    // let returnProject=JSONToProject(JSON.parse(localStorage.getItem("project")));
+    let returnedProject=Project.JSONToProject(JSON.parse(localStorage.getItem("project")));
+    console.log(returnedProject);
     // TYPING To Do
     // console.log(project.list);
-    for(let i=0;i<returnProject.list.length;i++){
-        let list=returnProject.list[i];
+    for(let i=0;i<returnedProject.list.length;i++){
+        let list=returnedProject.list[i];
         console.log(list);
         domManipulation.appendListElement(list);
         domManipulation.displayList(list);
@@ -32,8 +34,10 @@ else{
 
 const addListbutton=document.querySelector(".add-list-button");
 addListbutton.addEventListener("click",()=>{
+    console.log("hi");
     domManipulation.applyAddingList();
     localStorage.setItem("project",JSON.stringify(project));
+    console.log(project);
 });
 
 

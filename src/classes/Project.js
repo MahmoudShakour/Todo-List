@@ -46,12 +46,21 @@ export class Project{
             let todolist=this._list[i];
             for(let j=0;j<todolist._list.length;j++){
                 let item=todolist._list[j];
-                if(isSameWeek(new Date(item.dueDate))){
+                if(isSameWeek(Date.now,new Date(item.dueDate))){
                     list.push(item);
                 }
             }
         }
         return list;
+    }
+
+    static JSONToProject(obj){
+        let project=new Project();
+
+        for(let i=0;i<obj._list.length;i++){
+            project.addToDoList(List.JSONToList(obj._list[i]));
+        }
+        return project;
     }
 
     get list(){

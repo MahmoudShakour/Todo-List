@@ -25,6 +25,14 @@ export class List{
         return false;
     }
 
+    static JSONToList(obj){
+        let list=new List(obj._name);
+        for(let i=0;i<obj._list.length;i++){
+            list.addItem(Item.JSONToItem(obj._list[i]));
+        }
+        return list;
+    }
+
     get name(){
         return this._name;
     }

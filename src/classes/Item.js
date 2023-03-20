@@ -7,6 +7,10 @@ export class Item{
         this._status="To Do";
     }
 
+    static JSONToItem(obj){
+        return new Item(obj._title,obj._description,obj._priority,obj._dueDate);
+    }
+
     get description(){
         return this._description;
     }

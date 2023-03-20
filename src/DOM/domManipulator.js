@@ -11,6 +11,7 @@ export class domManipulation{
 
         const listElementContainer=document.createElement("div");
         listElementContainer.className="list-element-container";
+        listElementContainer.id=listObj.name;
 
         
         const listIcon=new Image();
@@ -20,7 +21,7 @@ export class domManipulation{
         const listName=document.createElement("div");
         listName.className="list-name";
         listName.textContent=listObj.name;
-
+        
         const header=document.createElement("div");
         header.className="header-container";
         header.appendChild(listIcon);
@@ -221,6 +222,12 @@ export class domManipulation{
 
             const body=document.querySelector("body");
             body.removeChild(form);
+
+            localStorage.setItem("project",JSON.stringify(project));
+
+            const list=document.getElementById(listObj.name);
+            list.appendChild(domManipulation.createItemElement(itemobj));
+
         });
     }
 }
